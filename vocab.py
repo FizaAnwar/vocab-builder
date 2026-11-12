@@ -84,6 +84,13 @@ def show_card(card):
     print(f"Meaning: {card['definition']}")
     print(f"Example: {card['example']}\n")
 
+def load_words(path="words.txt"):
+    """Read the word list, one word per line."""
+    if not os.path.exists(path):
+        return []
+    with open(path, "r", encoding="utf-8") as f:
+        return [line.strip() for line in f if line.strip()]   
+
 
 def main():
     while True:
