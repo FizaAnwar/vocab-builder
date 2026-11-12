@@ -125,3 +125,13 @@ vocab-builder/
 ## Author
 
 Your Name: [GitHub profile](https://github.com/YOUR_USERNAME)
+## Web interface (Streamlit)
+
+```bash
+streamlit run app.py
+```
+
+Opens in your browser with three tabs: **Look up**, **My flashcards**, and **Review**.
+The terminal version still works with `python3 vocab.py`.
+
+![App screenshot](screenshots/img.png)
