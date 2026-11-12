@@ -1,6 +1,10 @@
+import json
+import os
 import requests
 
 API_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/"
+FLASHCARD_FILE = "flashcards.json"
+
 
 def fetch_word(word):
     """Fetch a word's data from the dictionary API. Returns None if not found."""
@@ -13,6 +17,7 @@ def fetch_word(word):
         return None
     response.raise_for_status()
     return response.json()
+
 
 def parse_entry(data):
     """Pull out the word, part of speech, definition and an example."""
@@ -34,6 +39,45 @@ def parse_entry(data):
         "example": example or "No example available",
     }
 
+
+def load_flashcards():
+    if os.path.exists(FLASHCARD_FILE):
+        with open(FLASHCARD_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+
+def save_flashcard(card):
+    cards = load_flashcards()
+    if any(c["word"].lower() == card["word"].lower() for c in cards):
+        print("Already in your flashcards.")
+        return
+    cards.append(card)
+    with open(FLASHCARD_FILE, "w", encoding="utf-8") as f:
+        json.dump(cards, f, indent=2, ensure_ascii=False)
+    print("Saved to flashcards.json")
+
+
+def show_card(card):
+    print(f"\nWord: {card['word']} ({card['part_of_speech']})")
+    print(f"Meaning: {card['definition']}")
+    print(f"Example: {card['example']}\n")
+
+def main():
+    while True:
+        word = input("Enter a word (or 'q' to quit): ").strip().lower()
+        if word == "q":
+            break
+        if not word:
+            continue
+        data = fetch_word(word)
+        if data is None:
+            print("Word not found. Try another.")
+            continue
+        card = parse_entry(data)
+        show_card(card)
+        if input("Save as flashcard? (y/n): ").lower() == "y":
+            save_flashcard(card)
+
 if __name__ == "__main__":
-    data = fetch_word("hello")
-    print(parse_entry(data))
+    main()
