@@ -14,5 +14,29 @@ def fetch_word(word):
     response.raise_for_status()
     return response.json()
 
+def parse_entry(data):
+    """Pull out the word, part of speech, definition and an example."""
+    entry = data[0]
+    first = entry["meanings"][0]
+    definition = first["definitions"][0]["definition"]
+    example = None
+    for meaning in entry["meanings"]:
+        for d in meaning["definitions"]:
+            if d.get("example"):
+                example = d["example"]
+                break
+        if example:
+            break
+    return {
+        "word": entry["word"],
+        "part_of_speech": first["partOfSpeech"],
+        "definition": definition,
+        "example": example or "No example available",
+    }
+
 if __name__ == "__main__":
-    print(fetch_word("hello"))
+    word_data = fetch_word("hello")
+    if word_data:
+        print(parse_entry(word_data))
+    else:
+        print("Word not found.")
