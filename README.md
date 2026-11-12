@@ -1,5 +1,8 @@
 # Vocab Builder
 
+## Live demo
+https://fiza-vocab-builder.streamlit.app
+
 A command-line vocabulary tool built in Python. Look up any English word, see its meaning and an example sentence, and save it to a flashcard file for later review.
 
 ## What it does
