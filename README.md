@@ -127,6 +127,9 @@ vocab-builder/
 
 ## Author
 
+## Word of the Day
+The Streamlit app includes a **Word of the Day** tab. It picks a word from `words.txt` (100 difficult words) based on the date, and a button shows a random one. You can save any word as a flashcard.
+
 Your Name: [GitHub profile](https://github.com/YOUR_USERNAME)
 ## Web interface (Streamlit)
 
