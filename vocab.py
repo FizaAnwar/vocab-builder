@@ -1,22 +1,32 @@
 import json
 import os
+import time
 import requests
 
 API_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/"
 FLASHCARD_FILE = "flashcards.json"
 
 
-def fetch_word(word):
-    """Fetch a word's data from the dictionary API. Returns None if not found."""
-    try:
-        response = requests.get(API_URL + word, timeout=10)
-    except requests.RequestException as e:
-        print(f"Network error: {e}")
-        return None
-    if response.status_code == 404:
-        return None
-    response.raise_for_status()
-    return response.json()
+def fetch_word(word, retries=3):
+    """Fetch a word's data from the dictionary API. Returns None if not found or unavailable."""
+    for attempt in range(1, retries + 1):
+        try:
+            response = requests.get(API_URL + word, timeout=10)
+        except requests.RequestException as e:
+            print(f"Network error: {e}")
+            return None
+
+        if response.status_code == 404:
+            return None
+        if response.status_code == 200:
+            return response.json()
+
+        # Server problem (500, 502, 503...): wait and retry
+        print(f"Server error {response.status_code}. Retrying ({attempt}/{retries})...")
+        time.sleep(2)
+
+    print("The dictionary service is unavailable right now. Please try again later.")
+    return None
 
 
 def parse_entry(data):
@@ -57,6 +67,7 @@ def save_flashcard(card):
         json.dump(cards, f, indent=2, ensure_ascii=False)
     print("Saved to flashcards.json")
 
+
 def review_flashcards():
     cards = load_flashcards()
     if not cards:
@@ -73,6 +84,7 @@ def show_card(card):
     print(f"Meaning: {card['definition']}")
     print(f"Example: {card['example']}\n")
 
+
 def main():
     while True:
         word = input("Enter a word (or 'q' to quit): ").strip().lower()
@@ -82,12 +94,13 @@ def main():
             continue
         data = fetch_word(word)
         if data is None:
-            print("Word not found. Try another.")
+            print("Could not get that word. Check the spelling or try again later.")
             continue
         card = parse_entry(data)
         show_card(card)
-        if input("Save as flashcard? (y/n): ").lower() == "y":
+        if input("Save as flashcard? (y/n): ").strip().lower() == "y":
             save_flashcard(card)
+
 
 if __name__ == "__main__":
     main()
