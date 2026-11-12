@@ -1,0 +1,32 @@
+[
+  {
+    "word": "hello",
+    "part_of_speech": "noun",
+    "definition": "\"Hello!\" or an equivalent greeting.",
+    "example": "Hello, everyone."
+  },
+  {
+    "word": "interval",
+    "part_of_speech": "noun",
+    "definition": "A distance in space.",
+    "example": "the interval between contractions during childbirth"
+  },
+  {
+    "word": "car",
+    "part_of_speech": "noun",
+    "definition": "A wheeled vehicle that moves independently, with at least three wheels, powered mechanically, steered by a driver and mostly for personal transportation.",
+    "example": "She drove her car to the mall."
+  },
+  {
+    "word": "happened",
+    "part_of_speech": "verb",
+    "definition": "To occur or take place.",
+    "example": "Let me tell you how it happened."
+  },
+  {
+    "word": "serendipity",
+    "part_of_speech": "noun",
+    "definition": "A combination of events which have come together by chance to make a surprisingly good or wonderful outcome.",
+    "example": "No example available"
+  }
+]
