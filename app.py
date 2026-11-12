@@ -4,7 +4,7 @@ from vocab import fetch_word, parse_entry, save_flashcard, load_flashcards
 st.set_page_config(page_title="Vocab Builder", page_icon="📚")
 st.title("📚 Vocab Builder")
 
-tab_lookup, tab_cards = st.tabs(["🔍 Look up", "🗂️ My flashcards"])
+tab_lookup, tab_cards, tab_review = st.tabs(["🔍 Look up", "🗂️ My flashcards", "🧠 Review"])
 
 with tab_lookup:
     word = st.text_input("Enter a word").strip().lower()
@@ -40,3 +40,18 @@ with tab_cards:
             with st.expander(f"{c['word']} ({c['part_of_speech']})"):
                 st.write(f"**Meaning:** {c['definition']}")
                 st.write(f"**Example:** {c['example']}")
+with tab_review:
+    cards = load_flashcards()
+    if not cards:
+        st.info("No flashcards yet. Save some words first.")
+    else:
+        i = st.session_state.get("review_index", 0) % len(cards)
+        c = cards[i]
+        st.caption(f"Card {i + 1} of {len(cards)}")
+        st.markdown(f"## {c['word']}")
+        if st.checkbox("Show meaning", key=f"reveal_{i}"):
+            st.write(c["definition"])
+            st.write(f"*Example:* {c['example']}")
+        if st.button("Next card ➡️"):
+            st.session_state["review_index"] = (i + 1) % len(cards)
+            st.rerun()
