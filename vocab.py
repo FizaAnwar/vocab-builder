@@ -35,8 +35,5 @@ def parse_entry(data):
     }
 
 if __name__ == "__main__":
-    word_data = fetch_word("hello")
-    if word_data:
-        print(parse_entry(word_data))
-    else:
-        print("Word not found.")
+    data = fetch_word("hello")
+    print(parse_entry(data))
