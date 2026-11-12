@@ -57,6 +57,16 @@ def save_flashcard(card):
         json.dump(cards, f, indent=2, ensure_ascii=False)
     print("Saved to flashcards.json")
 
+def review_flashcards():
+    cards = load_flashcards()
+    if not cards:
+        print("No flashcards yet.")
+        return
+    for card in cards:
+        input(f"\nWhat does '{card['word']}' mean? (press Enter to reveal)")
+        print(card["definition"])
+        print("Example:", card["example"])
+
 
 def show_card(card):
     print(f"\nWord: {card['word']} ({card['part_of_speech']})")
