@@ -28,5 +28,83 @@
     "part_of_speech": "noun",
     "definition": "A combination of events which have come together by chance to make a surprisingly good or wonderful outcome.",
     "example": "No example available"
+  },
+  {
+    "word": "circumspect",
+    "part_of_speech": "adjective",
+    "definition": "Carefully aware of all circumstances; considerate of all that is pertinent.",
+    "example": "Being aware of the danger of upsetting her audience, she was somewhat circumspect in her comments."
+  },
+  {
+    "word": "wanton",
+    "part_of_speech": "noun",
+    "definition": "A pampered or coddled person.",
+    "example": "The young man wantoned away his inheritance."
+  },
+  {
+    "word": "obsequious",
+    "part_of_speech": "adjective",
+    "definition": "Obedient; compliant with someone else's orders or wishes.",
+    "example": "No example available"
+  },
+  {
+    "word": "efficacious",
+    "part_of_speech": "adjective",
+    "definition": "Effective; possessing efficacy.",
+    "example": "This medicine is efficacious."
+  },
+  {
+    "word": "ubiquitous",
+    "part_of_speech": "adjective",
+    "definition": "Being everywhere at once: omnipresent.",
+    "example": "To Hindus, Jews, Christians, and Muslims, God is ubiquitous."
+  },
+  {
+    "word": "paragon",
+    "part_of_speech": "noun",
+    "definition": "A person of preeminent qualities, who acts as a pattern or model for others.",
+    "example": "In the novel, Constanza is a paragon of virtue who would never compromise her reputation."
+  },
+  {
+    "word": "deleterious",
+    "part_of_speech": "adjective",
+    "definition": "Harmful often in a subtle or unexpected way.",
+    "example": "deleterious effects"
+  },
+  {
+    "word": "alacrity",
+    "part_of_speech": "noun",
+    "definition": "Eagerness; liveliness; enthusiasm.",
+    "example": "No example available"
+  },
+  {
+    "word": "intransigent",
+    "part_of_speech": "noun",
+    "definition": "A person who is intransigent.",
+    "example": "Don't waste your time trying to change his mind: he's completely intransigent."
+  },
+  {
+    "word": "obstinate",
+    "part_of_speech": "adjective",
+    "definition": "Stubbornly adhering to an opinion, purpose, or course, usually with implied unreasonableness; persistent.",
+    "example": "No example available"
+  },
+  {
+    "word": "mendacious",
+    "part_of_speech": "adjective",
+    "definition": "(of a person) Lying, untruthful or dishonest.",
+    "example": "No example available"
+  },
+  {
+    "word": "recalcitrant",
+    "part_of_speech": "noun",
+    "definition": "A person who is recalcitrant.",
+    "example": "No example available"
+  },
+  {
+    "word": "obfuscate",
+    "part_of_speech": "verb",
+    "definition": "To make dark; overshadow",
+    "example": "Before leaving the scene, the murderer set a fire in order to obfuscate any evidence of their identity."
   }
 ]
